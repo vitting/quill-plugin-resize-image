@@ -11,32 +11,33 @@ This version has been updated with Typescript types and works with newerst versi
 ### ES6
 
 ```javascript
-import Quill from 'quill';
-import { ImageResize } from 'quill-image-resize-module';
+import Quill from "quill";
+import { ImageResize } from "quill-image-resize-module";
 
-Quill.register('modules/imageResize', ImageResize);
+Quill.register("modules/imageResize", ImageResize);
 
 const quill = new Quill(editor, {
+  // ...
+  modules: {
     // ...
-    modules: {
-        // ...
-        imageResize: {
-            // See optional "config" below
-        }
-    }
+    imageResize: {
+      // See optional "config" below
+    },
+  },
 });
 ```
 
 ### Config
 
 For the default experience, pass an empty object, like so:
+
 ```javascript
 var quill = new Quill(editor, {
+  // ...
+  modules: {
     // ...
-    modules: {
-        // ...
-        ImageResize: {}
-    }
+    ImageResize: {},
+  },
 });
 ```
 
@@ -45,13 +46,13 @@ the default is to include all modules:
 
 ```javascript
 const quill = new Quill(editor, {
+  // ...
+  modules: {
     // ...
-    modules: {
-        // ...
-        ImageResize: {
-            modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
-        }
-    }
+    ImageResize: {
+      modules: ["Resize", "DisplaySize", "Toolbar"],
+    },
+  },
 });
 ```
 
@@ -65,19 +66,19 @@ The look and feel can be controlled with options:
 
 ```javascript
 var quill = new Quill(editor, {
+  // ...
+  modules: {
     // ...
-    modules: {
-        // ...
-        ImageResize: {
-            // ...
-            handleStyles: {
-                backgroundColor: 'black',
-                border: 'none',
-                color: white
-                // other camelCase styles for size display
-            }
-        }
-    }
+    ImageResize: {
+      // ...
+      handleStyles: {
+        backgroundColor: "black",
+        border: "none",
+        color: white,
+        // other camelCase styles for size display
+      },
+    },
+  },
 });
 ```
 
@@ -89,19 +90,19 @@ The look and feel can be controlled with options:
 
 ```javascript
 var quill = new Quill(editor, {
+  // ...
+  modules: {
     // ...
-    modules: {
-        // ...
-        ImageResize: {
-            // ...
-            displayStyles: {
-                backgroundColor: 'black',
-                border: 'none',
-                color: white
-                // other camelCase styles for size display
-            }
-        }
-    }
+    ImageResize: {
+      // ...
+      displayStyles: {
+        backgroundColor: "black",
+        border: "none",
+        color: white,
+        // other camelCase styles for size display
+      },
+    },
+  },
 });
 ```
 
@@ -113,25 +114,25 @@ The look and feel can be controlled with options:
 
 ```javascript
 var quill = new Quill(editor, {
+  // ...
+  modules: {
     // ...
-    modules: {
+    ImageResize: {
+      // ...
+      toolbarStyles: {
+        backgroundColor: "black",
+        width: "20px",
+        height: "20px",
+        // other camelCase styles for size display
+      },
+      toolbarButtonStyles: {
         // ...
-        ImageResize: {
-            // ...
-            toolbarStyles: {
-                backgroundColor: 'black',
-                width: "20px",
-                height: "20px"
-                // other camelCase styles for size display
-            },
-            toolbarButtonStyles: {
-                // ...
-            },
-            toolbarButtonSvgStyles: {
-                // ...
-            },
-        }
-    }
+      },
+      toolbarButtonSvgStyles: {
+        // ...
+      },
+    },
+  },
 });
 ```
 
@@ -143,20 +144,20 @@ the module setup.
 For example,
 
 ```javascript
-import { Resize, BaseModule } from 'quill-image-resize-module';
+import { Resize, BaseModule } from "quill-image-resize-module";
 
 class MyModule extends BaseModule {
-    // See src/modules/BaseModule.ts for documentation on the various lifecycle callbacks
+  // See src/modules/BaseModule.ts for documentation on the various lifecycle callbacks
 }
 
 var quill = new Quill(editor, {
+  // ...
+  modules: {
     // ...
-    modules: {
-        // ...
-        ImageResize: {
-            modules: [ MyModule, Resize ],
-            // ...
-        }
-    }
+    ImageResize: {
+      modules: [MyModule, Resize],
+      // ...
+    },
+  },
 });
 ```

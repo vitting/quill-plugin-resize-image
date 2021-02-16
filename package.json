@@ -14,9 +14,12 @@
     "build/types/",
     "build/_snowpack/"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitting/quill-plugin-resize-image"
+  },
   "keywords": [
     "quill",
-    "quilljs",
     "image",
     "resize",
     "sizer"
