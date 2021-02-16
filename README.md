@@ -12,7 +12,7 @@ This version has been updated with Typescript types and works with newerst versi
 
 ```javascript
 import Quill from "quill";
-import { ImageResize } from "quill-image-resize-module";
+import ImageResize from "quill-image-resize-module";
 
 Quill.register("modules/imageResize", ImageResize);
 
