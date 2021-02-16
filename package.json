@@ -1,5 +1,5 @@
 {
-  "name": "@vitting/quill-image-resizer",
+  "name": "quill-image-resizer-plugin",
   "version": "1.0.0",
   "description": "A module for Quill rich text editor to allow images to be resized.",
   "main": "./build/dist/index.js",

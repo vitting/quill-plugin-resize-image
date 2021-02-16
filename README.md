@@ -12,7 +12,7 @@ This version has been updated with Typescript types and works with newerst versi
 
 ```javascript
 import Quill from "quill";
-import ImageResize from "quill-image-resize-module";
+import ImageResize from "quill-image-resizer-plugin";
 
 Quill.register("modules/imageResize", ImageResize);
 
@@ -144,7 +144,7 @@ the module setup.
 For example,
 
 ```javascript
-import { Resize, BaseModule } from "quill-image-resize-module";
+import { Resize, BaseModule } from "quill-image-resizer-plugin";
 
 class MyModule extends BaseModule {
   // See src/modules/BaseModule.ts for documentation on the various lifecycle callbacks
