@@ -19,8 +19,6 @@ export class Toolbar extends BaseModule {
   toolbar!: HTMLDivElement;
   alignments: alignment[] = [];
   onCreate = () => {
-    console.log("ICON", AlignLeftIcon);
-
     // Setup Toolbar
     this.toolbar = document.createElement("div");
     Object.assign(this.toolbar.style, this.options.toolbarStyles);
