@@ -18,12 +18,27 @@
     /* more strict checking for errors that per-file transpilers like `esbuild` would crash */
     "isolatedModules": true,
     /* noEmit - We only use TypeScript for type checking. */
-    "noEmit": true,
+    // "noEmit": true,
     /* Additional Options */
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "declaration": true,
+    "lib": ["DOM", "ESNext"],
+    "sourceMap": true,
+    
   }
 }
+
+
+/*
+"paths": {
+            "/web_modules/*.js": [
+                "node_modules/@types/*",
+                "node_modules/*",
+                "web_modules/*.js"
+            ]
+        },
+*/

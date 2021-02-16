@@ -1,24 +1,162 @@
-# New Project
+# Quill ImageResize Module
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+A module for Quill rich text editor to allow images to be resized.
 
-## Available Scripts
+This is a clone of [https://github.com/kensnyder/quill-image-resize-module](https://github.com/kensnyder/quill-image-resize-module#readme)
 
-### npm start
+This version has been updated with Typescript types and works with newerst version of [Quill 1.3.7](https://github.com/quilljs/quill)
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+## Usage
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+### ES6
 
-### npm run build
+```javascript
+import Quill from 'quill';
+import { ImageResize } from 'quill-image-resize-module';
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+Quill.register('modules/imageResize', ImageResize);
 
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
+const quill = new Quill(editor, {
+    // ...
+    modules: {
+        // ...
+        imageResize: {
+            // See optional "config" below
+        }
+    }
+});
+```
 
-### Q: What about Eject?
+### Config
 
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+For the default experience, pass an empty object, like so:
+```javascript
+var quill = new Quill(editor, {
+    // ...
+    modules: {
+        // ...
+        ImageResize: {}
+    }
+});
+```
+
+Functionality is broken down into modules, which can be mixed and matched as you like. For example,
+the default is to include all modules:
+
+```javascript
+const quill = new Quill(editor, {
+    // ...
+    modules: {
+        // ...
+        ImageResize: {
+            modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+        }
+    }
+});
+```
+
+Each module is described below.
+
+#### `Resize` - Resize the image
+
+Adds handles to the image's corners which can be dragged with the mouse to resize the image.
+
+The look and feel can be controlled with options:
+
+```javascript
+var quill = new Quill(editor, {
+    // ...
+    modules: {
+        // ...
+        ImageResize: {
+            // ...
+            handleStyles: {
+                backgroundColor: 'black',
+                border: 'none',
+                color: white
+                // other camelCase styles for size display
+            }
+        }
+    }
+});
+```
+
+#### `DisplaySize` - Display pixel size
+
+Shows the size of the image in pixels near the bottom right of the image.
+
+The look and feel can be controlled with options:
+
+```javascript
+var quill = new Quill(editor, {
+    // ...
+    modules: {
+        // ...
+        ImageResize: {
+            // ...
+            displayStyles: {
+                backgroundColor: 'black',
+                border: 'none',
+                color: white
+                // other camelCase styles for size display
+            }
+        }
+    }
+});
+```
+
+#### `Toolbar` - Image alignment tools
+
+Displays a toolbar below the image, where the user can select an alignment for the image.
+
+The look and feel can be controlled with options:
+
+```javascript
+var quill = new Quill(editor, {
+    // ...
+    modules: {
+        // ...
+        ImageResize: {
+            // ...
+            toolbarStyles: {
+                backgroundColor: 'black',
+                width: "20px",
+                height: "20px"
+                // other camelCase styles for size display
+            },
+            toolbarButtonStyles: {
+                // ...
+            },
+            toolbarButtonSvgStyles: {
+                // ...
+            },
+        }
+    }
+});
+```
+
+#### `BaseModule` - Include your own custom module
+
+You can write your own module by extending the `BaseModule` class, and then including it in
+the module setup.
+
+For example,
+
+```javascript
+import { Resize, BaseModule } from 'quill-image-resize-module';
+
+class MyModule extends BaseModule {
+    // See src/modules/BaseModule.ts for documentation on the various lifecycle callbacks
+}
+
+var quill = new Quill(editor, {
+    // ...
+    modules: {
+        // ...
+        ImageResize: {
+            modules: [ MyModule, Resize ],
+            // ...
+        }
+    }
+});
+```
