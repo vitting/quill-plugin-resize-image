@@ -204,8 +204,8 @@ export default class ImageResize {
   checkImage(evt: Event) {
     if (this.img) {
       if (
-        (evt as KeyboardEvent).key == "46" ||
-        (evt as KeyboardEvent).key == "8"
+        (evt as KeyboardEvent).key == "Delete" ||
+        (evt as KeyboardEvent).key == "Backspace"
       ) {
         Quill.find(this.img).deleteAt(0);
       }
