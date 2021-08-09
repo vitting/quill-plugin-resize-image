@@ -78,9 +78,11 @@ export default class ImageResize {
   }
 
   onUpdate() {
-    this.repositionElements();
-    this.modules.forEach((module) => {
-      module.onUpdate();
+    window.requestAnimationFrame(() => {
+      this.repositionElements();
+      this.modules.forEach((module) => {
+        module.onUpdate();
+      });
     });
   }
 
